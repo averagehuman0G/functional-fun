@@ -50,9 +50,11 @@ Array.prototype.reduce = function(combinerFunc, initialValue) {
     return this;
   } else {
     if(arguments.length == 1) {
+      //if there is no initial value supplied then use the first value and skip the first element in the loop
       i = 1;
       accumulatedValue = this[0];
     } else if(arguments.length >= 2){
+      // if there is an initial value supplied use that 
        i = 0; 
        accumulatedValue = initialValue;
     }
