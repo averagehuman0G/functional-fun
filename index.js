@@ -38,3 +38,30 @@ Array.prototype.filter = function() {
     // }
   }
 };
+
+
+
+// [1,2,3].reduce(function(accumulatedValue, currentValue) { return accumulatedValue + currentValue; }); === [6];
+// [1,2,3].reduce(function(accumulatedValue, currentValue) { return accumulatedValue + currentValue; }, 10); === [16];
+Array.prototype.reduce = function(combinerFunc, initialValue) {
+  let accumulatedValue, i;
+  //if the array is empty then return it
+  if(this.length == 0 ) {
+    return this;
+  } else {
+    if(arguments.length == 1) {
+      i = 1;
+      accumulatedValue = this[0];
+    } else if(arguments.length >= 2){
+       i = 0; 
+       accumulatedValue = initialValue;
+    }
+    
+    for(; i < this.length; i++) {
+      accumulatedValue = combinerFunc(accumulatedValue, this[i]);
+    }
+    
+    return [accumulatedValue];
+  }
+  
+}
